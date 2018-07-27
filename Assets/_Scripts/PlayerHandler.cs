@@ -28,15 +28,7 @@ public class PlayerHandler : MonoBehaviour {
     {
         CharacterController controller = GetComponent<CharacterController>();
         movePlayer();
-        if (controller.isGrounded)
-        {
-            if (Input.GetButton("Jump"))
-                moveDirection.y = defJumpSpeed;
-        }
-        else
-        {
-            moveDirection.y -= defGravity * Time.deltaTime;
-        }
+        jumpPlayer();
     }
 
     void movePlayer()
@@ -46,12 +38,22 @@ public class PlayerHandler : MonoBehaviour {
             moveHorizontal = Input.GetAxis("Horizontal");
             moveVertical = Input.GetAxis("Vertical");
             moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
-            if (moveDirection.magnitude > 0.01f)
-            {
-                this.transform.forward = moveDirection;
-            }
         }
 
         controller.Move(moveDirection * defSpeed * Time.deltaTime);
+        moveDirection = transform.TransformDirection(moveDirection);
+    }
+
+    void jumpPlayer()
+    {
+        if (controller.isGrounded)
+        {
+            if (Input.GetButton("Jump"))
+                moveDirection.y = defJumpSpeed;
+        }
+        else
+        {
+            moveDirection.y -= defGravity * Time.deltaTime;
+        }
     }
 }
