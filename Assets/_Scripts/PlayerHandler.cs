@@ -42,6 +42,11 @@ public class PlayerHandler : MonoBehaviour {
             moveDirection *= defSpeed;
         }
 
+        // ANIMATOR LOCOMOTION SETUP
+        anim.SetFloat("vSpeed", moveVertical);
+        anim.SetFloat("hSpeed", moveHorizontal);
+        
+        // MOVEMENT
         controller.Move(moveDirection * Time.deltaTime);
     }
 
