@@ -898,6 +898,8 @@ GameObject:
   - component: {fileID: 904007916}
   - component: {fileID: 904007915}
   - component: {fileID: 904007914}
+  - component: {fileID: 904007918}
+  - component: {fileID: 904007919}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -961,13 +963,38 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 904007913}
-  m_LocalRotation: {x: -0.15827525, y: 0.4754867, z: -0.08741339, w: -0.8609415}
-  m_LocalPosition: {x: 6.461464, y: 2.9050572, z: -4.0654445}
+  m_LocalRotation: {x: -0.1653062, y: 0.50377905, z: -0.098883376, w: -0.8420824}
+  m_LocalPosition: {x: 6.7776337, y: 3.6954226, z: -2.9072158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904007918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 904007913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: fe84aa8ae839bd24d9430761d842305c, type: 2}
+--- !u!114 &904007919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 904007913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585aaf070d3f8ff4a9487d25076d42c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1559718633}
+  offset: {x: 7, y: 3.5, z: -2.2}
 --- !u!1001 &907355387
 Prefab:
   m_ObjectHideFlags: 0
@@ -1614,6 +1641,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4316456260163302, guid: e65f4dbcd29530d4982fee65cdde9c76,
     type: 2}
   m_PrefabInternal: {fileID: 1513866355}
+--- !u!4 &1559718633 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4404271270909212, guid: 5602a061939a7c943841a97bc9c72f93,
+    type: 2}
+  m_PrefabInternal: {fileID: 1162935342}
 --- !u!1001 &1575683335
 Prefab:
   m_ObjectHideFlags: 0

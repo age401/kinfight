@@ -36,7 +36,7 @@ public class PlayerHandler : MonoBehaviour {
         {
             moveHorizontal = Input.GetAxis("Horizontal");
             moveVertical = Input.GetAxis("Vertical");
-            moveDirection = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            moveDirection = new Vector3(-moveVertical, 0.0f, moveHorizontal);
             if (moveDirection.magnitude > 0.1)
                 transform.rotation = Quaternion.LookRotation(moveDirection);
             moveDirection *= defSpeed;
