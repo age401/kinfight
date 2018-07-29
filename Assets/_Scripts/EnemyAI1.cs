@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2AI : MonoBehaviour 
+public class EnemyAI1 : MonoBehaviour 
 {
-	public enum Estados { Alejar, Acercar, Idle }
+	public enum States { Alejar, Acercar, Idle, Disparar }
 
-	public Estados estado;
+	public States estado;
 	public Transform target;
 	public float distanciaMinima;
 	public float distanciaMaxima;
@@ -14,10 +14,11 @@ public class Enemy2AI : MonoBehaviour
 
 	public void Update()
 	{
-		if (estado == Estados.Alejar) Alejar ();
-		else if (estado == Estados.Acercar) Acercar();
-		else if (estado == Estados.Idle) Idle();
-	}
+		if (estado == States.Alejar) Alejar ();
+		else if (estado == States.Acercar) Acercar();
+		else if (estado == States.Idle) Idle();
+        else if (estado == States.Disparar) Disparar();
+    }
 
 	public void Acercar()
 	{
@@ -29,7 +30,7 @@ public class Enemy2AI : MonoBehaviour
 		} 
 		else 
 		{
-			estado = Estados.Idle;
+			estado = States.Idle;
 		}
 	}
 
@@ -43,7 +44,7 @@ public class Enemy2AI : MonoBehaviour
 		} 
 		else 
 		{
-			estado = Estados.Idle;
+			estado = States.Idle;
 		}
 	}
 
@@ -52,14 +53,15 @@ public class Enemy2AI : MonoBehaviour
 		float distanciaATarget = Vector3.Distance (transform.position, target.position);
 		if (distanciaATarget > distanciaMaxima) 
 		{
-			estado = Estados.Acercar;
+			estado = States.Acercar;
 		} 
 		else if (distanciaATarget < distanciaMinima) 
 		{
-			estado = Estados.Alejar;
+			estado = States.Alejar;
 		}
 	}
 
+    // Gizmos Reference
 	public void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
