@@ -11,7 +11,6 @@ public class PlayerHandler : MonoBehaviour {
     // Movement
     private float moveHorizontal;
     private float moveVertical;
-    private Vector3 faceDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
 
     // Components
@@ -37,11 +36,13 @@ public class PlayerHandler : MonoBehaviour {
         {
             moveHorizontal = Input.GetAxis("Horizontal");
             moveVertical = Input.GetAxis("Vertical");
-            moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
+            moveDirection = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            if (moveDirection.magnitude > 0.1)
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+            moveDirection *= defSpeed;
         }
 
-        controller.Move(moveDirection * defSpeed * Time.deltaTime);
-        moveDirection = transform.TransformDirection(moveDirection);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 
     void jumpPlayer()
@@ -53,7 +54,7 @@ public class PlayerHandler : MonoBehaviour {
         }
         else
         {
-            moveDirection.y -= defGravity * Time.deltaTime;
+            moveDirection.y -= defGravity;
         }
     }
 }
