@@ -8,11 +8,14 @@ public class EnemyAI1 : MonoBehaviour
 
 	public States estado;
 	public Transform target;
+    
 	public float distanciaMinima;
 	public float distanciaMaxima;
 	public float velocidad;
 
-	public void Update()
+    public GameObject enemyWeapon;
+
+    public void Update()
 	{
 		if (estado == States.Alejar) Alejar ();
 		else if (estado == States.Acercar) Acercar();
@@ -51,6 +54,10 @@ public class EnemyAI1 : MonoBehaviour
 	public void Idle()
 	{	
 		float distanciaATarget = Vector3.Distance (transform.position, target.position);
+        if (distanciaATarget > distanciaMinima && distanciaATarget < distanciaMinima)
+        {
+            Disparar();
+        }
 		if (distanciaATarget > distanciaMaxima) 
 		{
 			estado = States.Acercar;
@@ -63,7 +70,7 @@ public class EnemyAI1 : MonoBehaviour
 
     public void Disparar()
     {
-
+        enemyWeapon.EnemyRifleHandler.FireWeapon();
     }
 
     // Gizmos Reference
