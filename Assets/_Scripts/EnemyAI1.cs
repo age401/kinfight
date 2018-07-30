@@ -61,6 +61,11 @@ public class EnemyAI1 : MonoBehaviour
 		}
 	}
 
+    public void Disparar()
+    {
+
+    }
+
     // Gizmos Reference
 	public void OnDrawGizmos()
 	{
